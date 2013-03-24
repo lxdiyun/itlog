@@ -1,0 +1,111 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-03-24 18:17+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: models.py:7
+msgid "item user"
+msgstr "使用者"
+
+#: models.py:10
+msgid "user"
+msgstr "使用者"
+
+#: models.py:11
+msgid "users"
+msgstr "使用者"
+
+#: models.py:18 models.py:21
+msgid "location"
+msgstr "地点"
+
+#: models.py:22
+msgid "locations"
+msgstr "地点"
+
+#: models.py:30
+msgid "date"
+msgstr "日期"
+
+#: models.py:33
+msgid "description"
+msgstr ""
+
+#: models.py:34
+msgid "operator"
+msgstr "管理员"
+
+#: models.py:38
+msgid "log"
+msgstr "日志"
+
+#: models.py:39
+msgid "logs"
+msgstr "日志"
+
+#: models.py:47
+msgid "store up"
+msgstr "储藏"
+
+#: models.py:48
+msgid "in use"
+msgstr "使用中"
+
+#: models.py:49
+msgid "scrap"
+msgstr "报废"
+
+#: models.py:51
+msgid "item name"
+msgstr "设备名称"
+
+#: models.py:55
+msgid "sn"
+msgstr "资产编号"
+
+#: models.py:59
+msgid "sn/2"
+msgstr ""
+
+#: models.py:63
+msgid "status"
+msgstr "状态"
+
+#: models.py:66
+msgid "comments"
+msgstr "备注"
+
+#: models.py:69
+msgid "buy date"
+msgstr "购买日期"
+
+#: models.py:71
+msgid "last modify date"
+msgstr "最后修改时间"
+
+#: models.py:73
+msgid "last modify by"
+msgstr "最后修改管理员"
+
+#: models.py:79
+msgid "item"
+msgstr "设备"
+
+#: models.py:80
+msgid "items"
+msgstr "设备"
