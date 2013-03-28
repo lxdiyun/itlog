@@ -7,8 +7,8 @@ class User(models.Model):
     name = models.CharField(max_length=250, verbose_name=_('item user'))
 
     class Meta:
-        verbose_name = _('user')
-        verbose_name_plural = _('users')
+        verbose_name = _('item user')
+        verbose_name_plural = _('item users')
 
     def __unicode__(self):
         return self.name
