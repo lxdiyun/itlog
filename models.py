@@ -64,7 +64,9 @@ class Log(models.Model):
         verbose_name_plural = _('logs')
 
     def __unicode__(self):
-        return self.description
+        return "%s|%s|%s" % (self.date,
+                             self.operator,
+                             self.description)
 
 
 class Item(models.Model):
@@ -109,3 +111,12 @@ class Item(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def get_recent_logs(self):
+        string = ""
+        for log in self.log_set.all()[:5]:
+            string += "#" + unicode(log) + "\n<br> "
+
+        return string
+    get_recent_logs.short_description = _('recent logs')
+    get_recent_logs.allow_tags = True

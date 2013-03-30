@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-30 18:11+0800\n"
+"POT-Creation-Date: 2013-03-30 22:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "manufacturer name"
 msgstr "厂家名称"
 
-#: models.py:11 models.py:102
+#: models.py:11 models.py:105
 msgid "manufacturer"
 msgstr "生产厂家"
 
@@ -34,7 +34,7 @@ msgstr "生产厂家"
 msgid "item type name"
 msgstr "设备类型名称"
 
-#: models.py:23 models.py:100
+#: models.py:23 models.py:103
 msgid "item type"
 msgstr "设备类型"
 
@@ -42,7 +42,7 @@ msgstr "设备类型"
 msgid "item types"
 msgstr "设备类型"
 
-#: models.py:31 models.py:34 models.py:98
+#: models.py:31 models.py:34 models.py:101
 msgid "item user"
 msgstr "使用者"
 
@@ -50,7 +50,7 @@ msgstr "使用者"
 msgid "item users"
 msgstr "使用者"
 
-#: models.py:42 models.py:45 models.py:99
+#: models.py:42 models.py:45 models.py:102
 msgid "location"
 msgstr "地点"
 
@@ -70,62 +70,66 @@ msgstr "描述"
 msgid "operator"
 msgstr "管理员"
 
-#: models.py:62
+#: models.py:63
 msgid "log"
 msgstr "日志"
 
-#: models.py:63
+#: models.py:64
 msgid "logs"
 msgstr "日志"
 
-#: models.py:71
+#: models.py:74
 msgid "store up"
 msgstr "储藏"
 
-#: models.py:72
+#: models.py:75
 msgid "in use"
 msgstr "使用中"
 
-#: models.py:73
+#: models.py:76
 msgid "scrap"
 msgstr "报废"
 
-#: models.py:75
+#: models.py:78
 msgid "item name"
 msgstr "设备名称"
 
-#: models.py:79
+#: models.py:82
 msgid "sn"
 msgstr "资产编号"
 
-#: models.py:83
+#: models.py:86
 msgid "sn/2"
 msgstr "条码号"
 
-#: models.py:87
+#: models.py:90
 msgid "status"
 msgstr "状态"
 
-#: models.py:90
+#: models.py:93
 msgid "comments"
 msgstr "备注"
 
-#: models.py:93
+#: models.py:96
 msgid "buy date"
 msgstr "购买日期"
 
-#: models.py:95
+#: models.py:98
 msgid "last modify date"
 msgstr "最后修改时间"
 
-#: models.py:97
+#: models.py:100
 msgid "last modify by"
 msgstr "最后修改管理员"
 
-#: models.py:106
+#: models.py:109
 msgid "item"
 msgstr "设备"
 
-#: models.py:107
+#: models.py:110
 msgid "items"
 msgstr "设备"
+
+#: models.py:121
+msgid "recent logs"
+msgstr "最近日志"

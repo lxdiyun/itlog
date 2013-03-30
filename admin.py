@@ -43,7 +43,8 @@ class ItemAdmin(admin.ModelAdmin):
                     'last_modify_by',
                     'user',
                     'location',
-                    'comments']
+                    'comments',
+                    'get_recent_logs']
     search_fields = ['name', 'comments', 'user', 'location', 'sn', 'sn2']
     list_filter = [('last_modify_date', DateRangeFilter),
                    'last_modify_by',
