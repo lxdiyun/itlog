@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-28 11:18+0800\n"
+"POT-Creation-Date: 2013-03-30 18:11+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,90 +18,114 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: models.py:7 models.py:10
+#: models.py:8
+msgid "manufacturer name"
+msgstr "厂家名称"
+
+#: models.py:11 models.py:102
+msgid "manufacturer"
+msgstr "生产厂家"
+
+#: models.py:12
+msgid "manufacturers"
+msgstr "生产厂家"
+
+#: models.py:20
+msgid "item type name"
+msgstr "设备类型名称"
+
+#: models.py:23 models.py:100
+msgid "item type"
+msgstr "设备类型"
+
+#: models.py:24
+msgid "item types"
+msgstr "设备类型"
+
+#: models.py:31 models.py:34 models.py:98
 msgid "item user"
 msgstr "使用者"
 
-#: models.py:11
+#: models.py:35
 msgid "item users"
 msgstr "使用者"
 
-#: models.py:18 models.py:21
+#: models.py:42 models.py:45 models.py:99
 msgid "location"
 msgstr "地点"
 
-#: models.py:22
+#: models.py:46
 msgid "locations"
 msgstr "地点"
 
-#: models.py:30
+#: models.py:54
 msgid "date"
 msgstr "日期"
 
-#: models.py:33
+#: models.py:57
 msgid "description"
-msgstr ""
+msgstr "描述"
 
-#: models.py:34
+#: models.py:58
 msgid "operator"
 msgstr "管理员"
 
-#: models.py:38
+#: models.py:62
 msgid "log"
 msgstr "日志"
 
-#: models.py:39
+#: models.py:63
 msgid "logs"
 msgstr "日志"
 
-#: models.py:47
+#: models.py:71
 msgid "store up"
 msgstr "储藏"
 
-#: models.py:48
+#: models.py:72
 msgid "in use"
 msgstr "使用中"
 
-#: models.py:49
+#: models.py:73
 msgid "scrap"
 msgstr "报废"
 
-#: models.py:51
+#: models.py:75
 msgid "item name"
 msgstr "设备名称"
 
-#: models.py:55
+#: models.py:79
 msgid "sn"
 msgstr "资产编号"
 
-#: models.py:59
+#: models.py:83
 msgid "sn/2"
-msgstr ""
+msgstr "条码号"
 
-#: models.py:63
+#: models.py:87
 msgid "status"
 msgstr "状态"
 
-#: models.py:66
+#: models.py:90
 msgid "comments"
 msgstr "备注"
 
-#: models.py:69
+#: models.py:93
 msgid "buy date"
 msgstr "购买日期"
 
-#: models.py:71
+#: models.py:95
 msgid "last modify date"
 msgstr "最后修改时间"
 
-#: models.py:73
+#: models.py:97
 msgid "last modify by"
 msgstr "最后修改管理员"
 
-#: models.py:79
+#: models.py:106
 msgid "item"
 msgstr "设备"
 
-#: models.py:80
+#: models.py:107
 msgid "items"
 msgstr "设备"

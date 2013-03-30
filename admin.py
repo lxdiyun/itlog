@@ -1,7 +1,17 @@
-from models import User, Location, Item, Log
+from models import *
 from django.contrib import admin
 from daterange_filter.filter import DateRangeFilter
 from datetime import datetime
+
+
+class ItemTypeAdmin(admin.ModelAdmin):
+    model = ItemType
+    list_display = ['id', 'name']
+
+
+class ManufacturerAdmin(admin.ModelAdmin):
+    model = Manufacturer
+    list_display = ['id', 'name']
 
 
 class UserAdmin(admin.ModelAdmin):
@@ -71,6 +81,8 @@ class ItemAdmin(admin.ModelAdmin):
         return message
 
 
+admin.site.register(Item, ItemAdmin)
+admin.site.register(ItemType, ItemTypeAdmin)
+admin.site.register(Manufacturer, ManufacturerAdmin)
 admin.site.register(User, UserAdmin)
 admin.site.register(Location, LocationAdmin)
-admin.site.register(Item, ItemAdmin)

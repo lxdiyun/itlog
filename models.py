@@ -3,6 +3,30 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User as Operator
 
 
+class Manufacturer(models.Model):
+    name = models.CharField(max_length=250,
+                            verbose_name=_('manufacturer name'))
+
+    class Meta:
+        verbose_name = _('manufacturer')
+        verbose_name_plural = _('manufacturers')
+
+    def __unicode__(self):
+        return self.name
+
+
+class ItemType(models.Model):
+    name = models.CharField(max_length=250,
+                            verbose_name=_('item type name'))
+
+    class Meta:
+        verbose_name = _('item type')
+        verbose_name_plural = _('item types')
+
+    def __unicode__(self):
+        return self.name
+
+
 class User(models.Model):
     name = models.CharField(max_length=250, verbose_name=_('item user'))
 
@@ -35,6 +59,7 @@ class Log(models.Model):
     item = models.ForeignKey('Item')
 
     class Meta:
+        ordering = ['-date']
         verbose_name = _('log')
         verbose_name_plural = _('logs')
 
@@ -71,8 +96,11 @@ class Item(models.Model):
                                         verbose_name=_('last modify date'))
     last_modify_by = models.ForeignKey(Operator,
                                        verbose_name=_('last modify by'))
-    user = models.ForeignKey(User)
-    location = models.ForeignKey(Location)
+    user = models.ForeignKey(User, verbose_name=_('item user'))
+    location = models.ForeignKey(Location, verbose_name=_('location'))
+    itemtype = models.ForeignKey(ItemType, verbose_name=_('item type'))
+    manufacturer = models.ForeignKey(Manufacturer,
+                                     verbose_name=_('manufacturer'))
 
     class Meta:
         ordering = ['-last_modify_date']
