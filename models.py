@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User as Operator
+from django.utils.timezone import localtime
 
 
 class Manufacturer(models.Model):
@@ -50,8 +51,8 @@ class Location(models.Model):
 
 
 class Log(models.Model):
-    date = models.DateField(auto_now_add=True,
-                            verbose_name=_('date'))
+    time = models.DateTimeField(auto_now_add=True,
+                                verbose_name=_('log time'))
     description = models.TextField(blank=True,
                                    null=True,
                                    verbose_name=_("description"))
@@ -59,12 +60,12 @@ class Log(models.Model):
     item = models.ForeignKey('Item')
 
     class Meta:
-        ordering = ['-date']
+        ordering = ['-time']
         verbose_name = _('log')
         verbose_name_plural = _('logs')
 
     def __unicode__(self):
-        return "%s|%s|%s" % (self.date,
+        return "%s|%s|%s" % (localtime(self.time),
                              self.operator,
                              self.description)
 
@@ -115,7 +116,7 @@ class Item(models.Model):
     def get_recent_logs(self):
         string = ""
         for log in self.log_set.all()[:5]:
-            string += "#" + unicode(log) + "\n<br> "
+            string += "#" + unicode(log) + "\n <br> \n"
 
         return string
     get_recent_logs.short_description = _('recent logs')

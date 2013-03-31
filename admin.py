@@ -2,6 +2,7 @@ from models import *
 from django.contrib import admin
 from daterange_filter.filter import DateRangeFilter
 from datetime import datetime
+from adli.admin_actions import export_csv_action
 
 
 class ItemTypeAdmin(admin.ModelAdmin):
@@ -26,7 +27,7 @@ class LocationAdmin(admin.ModelAdmin):
 
 class LogInline(admin.TabularInline):
     model = Log
-    readonly_fields = ['operator', 'date']
+    readonly_fields = ['operator', 'time']
 
     def save_model(self, request, obj, form, change):
         print("new log")
@@ -35,16 +36,7 @@ class LogInline(admin.TabularInline):
 
 
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ['name',
-                    'sn',
-                    'sn2',
-                    'buy_date',
-                    'last_modify_date',
-                    'last_modify_by',
-                    'user',
-                    'location',
-                    'comments',
-                    'get_recent_logs']
+    list_display = [f.name for f in Item._meta.fields] + ['get_recent_logs']
     search_fields = ['name', 'comments', 'user', 'location', 'sn', 'sn2']
     list_filter = [('last_modify_date', DateRangeFilter),
                    'last_modify_by',
@@ -54,6 +46,7 @@ class ItemAdmin(admin.ModelAdmin):
                    ]
     inlines = [LogInline]
     exclude = ['last_modify_by']
+    actions = [export_csv_action(extra=['get_recent_logs'])]
 
     def save_model(self, request, obj, form, change):
         obj.last_modify_by = request.user
