@@ -37,12 +37,15 @@ class LogInline(admin.TabularInline):
 class ItemAdmin(admin.ModelAdmin):
     list_display = ([f.name for f in Item._meta.fields]
                     + ['get_recent_logs'])
-    search_fields = ['name', 'comments', 'user', 'location', 'sn', 'sn2']
+    search_fields = ['name', 'comments', 'user__name', 'location__name',
+                     'itemtype__name', 'manufacturer__name', 'sn', 'sn2']
     list_filter = [('last_modify_date', DateRangeFilter),
+                   ('buy_date', DateRangeFilter),
                    'last_modify_by',
                    'user__name',
                    'location__name',
-                   ('buy_date', DateRangeFilter),
+                   'manufacturer__name',
+                   'itemtype__name',
                    ]
     inlines = [LogInline]
     exclude = ['last_modify_by']
