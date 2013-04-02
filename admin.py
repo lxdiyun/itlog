@@ -75,7 +75,8 @@ class ItemAdmin(admin.ModelAdmin):
                                                                   formsets)
         print(form.cleaned_data)
         for item in form.changed_data:
-            message += "\n%s => %s" % (item, form.cleaned_data.get(item))
+            message += "\n%s => %s" % (item,
+                                       unicode(form.cleaned_data.get(item)))
 
         return message
 

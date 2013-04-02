@@ -100,7 +100,7 @@ msgstr "资产编号"
 
 #: models.py:86
 msgid "sn/2"
-msgstr "条码号"
+msgstr "机身编号"
 
 #: models.py:90
 msgid "status"
