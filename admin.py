@@ -42,6 +42,7 @@ class ItemAdmin(admin.ModelAdmin):
     list_filter = [('last_modify_date', DateRangeFilter),
                    ('buy_date', DateRangeFilter),
                    'last_modify_by',
+                   'status',
                    'user__name',
                    'location__name',
                    'manufacturer__name',
