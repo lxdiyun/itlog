@@ -75,6 +75,7 @@ class Item(models.Model):
         (0, _('store up')),
         (1, _('in use')),
         (2, _('scrap')),
+        (3, _('broken')),
     )
     name = models.CharField(max_length=250, verbose_name=_('item name'))
     sn = models.CharField(max_length=128,
