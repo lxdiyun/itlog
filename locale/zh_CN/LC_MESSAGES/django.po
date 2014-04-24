@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-16 08:40+0800\n"
+"POT-Creation-Date: 2014-04-24 14:22+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "manufacturer name"
 msgstr "厂家名称"
 
-#: models.py:12 models.py:107
+#: models.py:12 models.py:113
 msgid "manufacturer"
 msgstr "生产厂家"
 
@@ -34,109 +34,185 @@ msgstr "生产厂家"
 msgid "item type name"
 msgstr "设备类型名称"
 
-#: models.py:24 models.py:105
+#: models.py:25
+msgid "catalog id"
+msgstr "分类号"
+
+#: models.py:27
+msgid "national id"
+msgstr "国标号"
+
+#: models.py:30 models.py:111 models.py:137
 msgid "item type"
 msgstr "设备类型"
 
-#: models.py:25
+#: models.py:31
 msgid "item types"
 msgstr "设备类型"
 
-#: models.py:32 models.py:35 models.py:103
+#: models.py:38 models.py:41 models.py:109
 msgid "item user"
 msgstr "使用者"
 
-#: models.py:36
+#: models.py:42
 msgid "item users"
 msgstr "使用者"
 
-#: models.py:43 models.py:46 models.py:104
+#: models.py:49 models.py:52 models.py:110 models.py:170
 msgid "location"
 msgstr "地点"
 
-#: models.py:47
+#: models.py:53
 msgid "locations"
 msgstr "地点"
 
-#: models.py:55
+#: models.py:61
 msgid "log time"
 msgstr "记录时间"
 
-#: models.py:58
+#: models.py:64
 msgid "description"
 msgstr "描述"
 
-#: models.py:59
+#: models.py:65
 msgid "operator"
 msgstr "管理员"
 
-#: models.py:64
+#: models.py:70
 msgid "log"
 msgstr "日志"
 
-#: models.py:65
+#: models.py:71
 msgid "logs"
 msgstr "日志"
 
-#: models.py:75
+#: models.py:81
 msgid "store up"
 msgstr "储藏"
 
-#: models.py:76
+#: models.py:82
 msgid "in use"
 msgstr "使用中"
 
-#: models.py:77
+#: models.py:83
 msgid "scrap"
 msgstr "报废"
 
-#: models.py:78
+#: models.py:84
 msgid "broken"
 msgstr "损坏"
 
-#: models.py:80
+#: models.py:86 models.py:138
 msgid "item name"
 msgstr "设备名称"
 
-#: models.py:84
+#: models.py:90 models.py:136
 msgid "sn"
 msgstr "资产编号"
 
-#: models.py:88
+#: models.py:94 models.py:149
 msgid "sn/2"
 msgstr "机身编号"
 
-#: models.py:92
+#: models.py:98 models.py:166
 msgid "status"
 msgstr "状态"
 
-#: models.py:95
+#: models.py:101
 msgid "comments"
 msgstr "备注"
 
-#: models.py:98
+#: models.py:104 models.py:171
 msgid "buy date"
 msgstr "购买日期"
 
-#: models.py:100
+#: models.py:106
 msgid "last modify date"
 msgstr "最后修改时间"
 
-#: models.py:102
+#: models.py:108
 msgid "last modify by"
 msgstr "最后修改管理员"
 
-#: models.py:111
+#: models.py:117
 msgid "item"
 msgstr "设备"
 
-#: models.py:112
+#: models.py:118
 msgid "items"
 msgstr "设备"
 
-#: models.py:123
+#: models.py:129
 msgid "recent logs"
 msgstr "最近日志"
+
+#: models.py:134
+msgid "number"
+msgstr "序号"
+
+#: models.py:140
+msgid "model"
+msgstr "资产型号"
+
+#: models.py:142
+msgid "specification"
+msgstr "资产规格"
+
+#: models.py:145
+msgid "price"
+msgstr "单价"
+
+#: models.py:150
+msgid "department"
+msgstr "使用部门"
+
+#: models.py:154
+msgid "user"
+msgstr "使用人"
+
+#: models.py:158
+msgid "keeper"
+msgstr "保管员"
+
+#: models.py:162
+msgid "officer in charge"
+msgstr "单位责任人"
+
+#: models.py:173
+msgid "source of funding"
+msgstr "经费科目"
+
+#: models.py:176
+msgid "record date"
+msgstr "入账日期"
+
+#: models.py:177
+msgid "country"
+msgstr "国家"
+
+#: models.py:178
+msgid "provider"
+msgstr "供应商"
+
+#: models.py:179
+msgid "depreciated date"
+msgstr "折旧年限"
+
+#: models.py:180
+msgid "used year"
+msgstr "已用年数"
+
+#: models.py:183
+msgid "depreciated price"
+msgstr "折旧后金额"
+
+#: models.py:187
+msgid "Resource"
+msgstr "资产设备"
+
+#: models.py:188
+msgid "Resources"
+msgstr "资产设备"
 
 #~ msgid "date"
 #~ msgstr "日期"

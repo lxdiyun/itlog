@@ -38,7 +38,8 @@ class ItemAdmin(admin.ModelAdmin):
     list_display = ([f.name for f in Item._meta.fields]
                     + ['get_recent_logs'])
     search_fields = ['name', 'comments', 'user__name', 'location__name',
-                     'itemtype__name', 'manufacturer__name', 'sn', 'sn2']
+                     'item_type__name', 'manufacturer__name', 'sn', 'sn2',
+                     'log__description']
     list_filter = [('last_modify_date', DateRangeFilter),
                    ('buy_date', DateRangeFilter),
                    'last_modify_by',
@@ -46,7 +47,7 @@ class ItemAdmin(admin.ModelAdmin):
                    'user__name',
                    'location__name',
                    'manufacturer__name',
-                   'itemtype__name',
+                   'item_type__name',
                    ]
     inlines = [LogInline]
     exclude = ['last_modify_by']
@@ -94,8 +95,24 @@ class ItemAdmin(admin.ModelAdmin):
             self.model.objects.create(**new_kwargs)
 
 
+class ResourceAdmin(admin.ModelAdmin):
+    search_fields = ['name', 'user',
+                     'item_type__name', 'sn', 'sn2']
+    list_filter = [('record_date', DateRangeFilter),
+                   ('buy_date', DateRangeFilter),
+                   'user',
+                   'item_type__name',
+                   ]
+
+    def get_list_display(self, request):
+        l = [f.name for f in Resource._meta.fields]
+        l.remove('id')
+
+        return l
+
 admin.site.register(Item, ItemAdmin)
 admin.site.register(ItemType, ItemTypeAdmin)
 admin.site.register(Manufacturer, ManufacturerAdmin)
 admin.site.register(User, UserAdmin)
 admin.site.register(Location, LocationAdmin)
+admin.site.register(Resource, ResourceAdmin)

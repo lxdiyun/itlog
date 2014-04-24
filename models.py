@@ -19,6 +19,12 @@ class Manufacturer(models.Model):
 class ItemType(models.Model):
     name = models.CharField(max_length=250,
                             verbose_name=_('item type name'))
+    catalog_id = models.CharField(max_length=250,
+                                  blank=True,
+                                  null=True,
+                                  verbose_name=_('catalog id'))
+    national_id = models.CharField(max_length=250,
+                                   verbose_name=_('national id'))
 
     class Meta:
         verbose_name = _('item type')
@@ -102,7 +108,7 @@ class Item(models.Model):
                                        verbose_name=_('last modify by'))
     user = models.ForeignKey(User, verbose_name=_('item user'))
     location = models.ForeignKey(Location, verbose_name=_('location'))
-    itemtype = models.ForeignKey(ItemType, verbose_name=_('item type'))
+    item_type = models.ForeignKey(ItemType, verbose_name=_('item type'))
     manufacturer = models.ForeignKey(Manufacturer,
                                      verbose_name=_('manufacturer'))
 
@@ -122,3 +128,64 @@ class Item(models.Model):
         return string
     get_recent_logs.short_description = _('recent logs')
     get_recent_logs.allow_tags = True
+
+
+class Resource(models.Model):
+    number = models.IntegerField(verbose_name=_('number'))
+    sn = models.CharField(max_length=128,
+                          verbose_name=_('sn'))
+    item_type = models.ForeignKey(ItemType, verbose_name=_('item type'))
+    name = models.CharField(max_length=250, verbose_name=_('item name'))
+    model = models.CharField(max_length=512,
+                             verbose_name=_('model'))
+    specification = models.CharField(max_length=512,
+                                     verbose_name=_('specification'))
+    price = models.DecimalField(max_digits=100,
+                                decimal_places=2,
+                                verbose_name=_('price'))
+    sn2 = models.CharField(max_length=128,
+                           null=True,
+                           blank=True,
+                           verbose_name=_('sn/2'))
+    department = models.CharField(max_length=128, verbose_name=_('department'))
+    user = models.CharField(max_length=128,
+                            null=True,
+                            blank=True,
+                            verbose_name=_('user'))
+    keeper = models.CharField(max_length=128,
+                              null=True,
+                              blank=True,
+                              verbose_name=_('keeper'))
+    officer = models.CharField(max_length=128,
+                               null=True,
+                               blank=True,
+                               verbose_name=_('officer in charge'))
+    status = models.CharField(max_length=128,
+                              null=True,
+                              blank=True,
+                              verbose_name=_('status'))
+    location = models.CharField(max_length=256,
+                                null=True,
+                                blank=True,
+                                verbose_name=_('location'))
+    buy_date = models.DateField(verbose_name=_('buy date'))
+    funding_source = models.CharField(max_length=256,
+                                      verbose_name=_('source of funding'))
+    record_date = models.DateField(null=True,
+                                   blank=True,
+                                   verbose_name=_('record date'))
+    country = models.CharField(max_length=256, verbose_name=_('country'))
+    provider = models.CharField(max_length=256, verbose_name=_('provider'))
+    depreciated_year = models.IntegerField(verbose_name=_('depreciated date'))
+    used_year = models.IntegerField(verbose_name=_('used year'))
+    depreciated_price = models.DecimalField(max_digits=100,
+                                            decimal_places=2,
+                                            verbose_name=_('depreciated price'))
+
+    class Meta:
+        ordering = ['-record_date']
+        verbose_name = _('Resource')
+        verbose_name_plural = _('Resources')
+
+    def __unicode__(self):
+        return self.name
