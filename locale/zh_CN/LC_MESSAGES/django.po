@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-25 17:10+0800\n"
+"POT-Creation-Date: 2014-04-25 17:13+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,11 +128,11 @@ msgstr "最后修改管理员"
 
 #: models.py:114
 msgid "item"
-msgstr "设备"
+msgstr "设备日志"
 
 #: models.py:115
 msgid "items"
-msgstr "设备"
+msgstr "设备日志"
 
 #: models.py:126
 msgid "recent logs"
