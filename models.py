@@ -4,6 +4,7 @@ from django.contrib.auth.models import User as Operator
 from django.utils.timezone import localtime
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import escape
+from django.utils import formats
 
 
 class Manufacturer(models.Model):
@@ -194,12 +195,22 @@ class Resource(models.Model):
 
     def get_item(self):
         items = Item.objects.filter(sn=self.sn)
+        html = '<a href="%s">%s</a>'
         if items:
-            return '<a href="%s">%s</a>' % (reverse('admin:itlog_item_change',
-                                                    args=(items[0].id,)),
-                                            items[0].name)
+            return html % (reverse('admin:itlog_item_change',
+                                   args=(items[0].id,)),
+                           escape(items[0].name))
         else:
-            return None
+            args = 'sn=' + self.sn
+            if self.sn2:
+                args += "&" + 'sn2=' + self.sn2
+            if self.name:
+                args += "&" + 'name=' + self.name
+            if self.buy_date:
+                args += "&" + 'buy_date=' + formats.date_format(self.buy_date)
+            args += "&" + 'comments=' + self.model + '%0A' + self.specification
+            return html % (reverse('admin:itlog_item_add') + "?" + args,
+                           escape("+"))
 
     get_item.short_description = _('associated item')
     get_item.allow_tags = True

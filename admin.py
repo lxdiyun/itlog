@@ -107,11 +107,13 @@ class ResourceAdmin(admin.ModelAdmin):
                    ]
 
     def get_list_display(self, request):
-        l = [f.name for f in Resource._meta.fields]
+        l = ['get_item'] + [f.name for f in Resource._meta.fields]
         l.remove('id')
-        l = l + ['get_item']
 
         return l
+
+    def get_list_display_links(self, request, list_display):
+        return list_display[1:3]
 
 admin.site.register(Item, ItemAdmin)
 admin.site.register(ItemType, ItemTypeAdmin)
