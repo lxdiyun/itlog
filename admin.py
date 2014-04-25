@@ -96,17 +96,20 @@ class ItemAdmin(admin.ModelAdmin):
 
 
 class ResourceAdmin(admin.ModelAdmin):
-    search_fields = ['name', 'user',
-                     'item_type__name', 'sn', 'sn2']
+    search_fields = ['name', 'user', 'sn', 'sn2']
     list_filter = [('record_date', DateRangeFilter),
                    ('buy_date', DateRangeFilter),
+                   'catalog_id',
+                   'national_id',
                    'user',
-                   'item_type__name',
+                   'name',
+                   'funding_source',
                    ]
 
     def get_list_display(self, request):
         l = [f.name for f in Resource._meta.fields]
         l.remove('id')
+        l = l + ['get_item']
 
         return l
 

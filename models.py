@@ -2,6 +2,8 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User as Operator
 from django.utils.timezone import localtime
+from django.core.urlresolvers import reverse
+from django.template.defaultfilters import escape
 
 
 class Manufacturer(models.Model):
@@ -19,12 +21,6 @@ class Manufacturer(models.Model):
 class ItemType(models.Model):
     name = models.CharField(max_length=250,
                             verbose_name=_('item type name'))
-    catalog_id = models.CharField(max_length=250,
-                                  blank=True,
-                                  null=True,
-                                  verbose_name=_('catalog id'))
-    national_id = models.CharField(max_length=250,
-                                   verbose_name=_('national id'))
 
     class Meta:
         verbose_name = _('item type')
@@ -134,8 +130,13 @@ class Resource(models.Model):
     number = models.IntegerField(verbose_name=_('number'))
     sn = models.CharField(max_length=128,
                           verbose_name=_('sn'))
-    item_type = models.ForeignKey(ItemType, verbose_name=_('item type'))
-    name = models.CharField(max_length=250, verbose_name=_('item name'))
+    catalog_id = models.CharField(max_length=250,
+                                  blank=True,
+                                  null=True,
+                                  verbose_name=_('catalog id'))
+    national_id = models.CharField(max_length=250,
+                                   verbose_name=_('national id'))
+    name = models.CharField(max_length=250, verbose_name=_('resource name'))
     model = models.CharField(max_length=512,
                              verbose_name=_('model'))
     specification = models.CharField(max_length=512,
@@ -180,7 +181,8 @@ class Resource(models.Model):
     used_year = models.IntegerField(verbose_name=_('used year'))
     depreciated_price = models.DecimalField(max_digits=100,
                                             decimal_places=2,
-                                            verbose_name=_('depreciated price'))
+                                            verbose_name=_('depreciated price')
+                                            )
 
     class Meta:
         ordering = ['-record_date']
@@ -189,3 +191,15 @@ class Resource(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def get_item(self):
+        items = Item.objects.filter(sn=self.sn)
+        if items:
+            return '<a href="%s">%s</a>' % (reverse('admin:itlog_item_change',
+                                                    args=(items[0].id,)),
+                                            items[0].name)
+        else:
+            return None
+
+    get_item.short_description = _('associated item')
+    get_item.allow_tags = True
