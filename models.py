@@ -8,8 +8,7 @@ from django.utils import formats
 
 
 class Manufacturer(models.Model):
-    name = models.CharField(max_length=250,
-                            verbose_name=_('manufacturer name'))
+    name = models.CharField(max_length=250, verbose_name=_('manufacturer name'))
 
     class Meta:
         verbose_name = _('manufacturer')
@@ -20,8 +19,7 @@ class Manufacturer(models.Model):
 
 
 class ItemType(models.Model):
-    name = models.CharField(max_length=250,
-                            verbose_name=_('item type name'))
+    name = models.CharField(max_length=250, verbose_name=_('item type name'))
 
     class Meta:
         verbose_name = _('item type')
@@ -54,11 +52,8 @@ class Location(models.Model):
 
 
 class Log(models.Model):
-    time = models.DateTimeField(auto_now_add=True,
-                                verbose_name=_('log time'))
-    description = models.TextField(blank=True,
-                                   null=True,
-                                   verbose_name=_("description"))
+    time = models.DateTimeField(auto_now_add=True, verbose_name=_('log time'))
+    description = models.TextField(blank=True, null=True, verbose_name=_("description"))
     operator = models.ForeignKey(Operator, verbose_name=_('operator'))
     item = models.ForeignKey('Item')
 
@@ -81,33 +76,17 @@ class Item(models.Model):
         (3, _('broken')),
     )
     name = models.CharField(max_length=250, verbose_name=_('item name'))
-    sn = models.CharField(max_length=128,
-                          null=True,
-                          blank=True,
-                          verbose_name=_('sn'))
-    sn2 = models.CharField(max_length=128,
-                           null=True,
-                           blank=True,
-                           verbose_name=_('sn/2'))
-    status = models.IntegerField(max_length=8,
-                                 choices=STATUS,
-                                 default=0,
-                                 verbose_name=_('status'))
-    comments = models.TextField(blank=True,
-                                null=True,
-                                verbose_name=_('comments'))
-    buy_date = models.DateField(null=True,
-                                blank=True,
-                                verbose_name=_('buy date'))
-    last_modify_date = models.DateField(auto_now_add=True,
-                                        verbose_name=_('last modify date'))
-    last_modify_by = models.ForeignKey(Operator,
-                                       verbose_name=_('last modify by'))
+    sn = models.CharField(max_length=128, null=True, blank=True, verbose_name=_('sn'))
+    sn2 = models.CharField(max_length=128, null=True, blank=True, verbose_name=_('sn/2'))
+    status = models.IntegerField(max_length=8, choices=STATUS, default=0, verbose_name=_('status'))
+    comments = models.TextField(blank=True, null=True, verbose_name=_('comments'))
+    buy_date = models.DateField(null=True, blank=True, verbose_name=_('buy date'))
+    last_modify_date = models.DateField(auto_now_add=True, verbose_name=_('last modify date'))
+    last_modify_by = models.ForeignKey(Operator, verbose_name=_('last modify by'))
     user = models.ForeignKey(User, verbose_name=_('item user'))
     location = models.ForeignKey(Location, verbose_name=_('location'))
     item_type = models.ForeignKey(ItemType, verbose_name=_('item type'))
-    manufacturer = models.ForeignKey(Manufacturer,
-                                     verbose_name=_('manufacturer'))
+    manufacturer = models.ForeignKey(Manufacturer, verbose_name=_('manufacturer'))
 
     class Meta:
         ordering = ['-last_modify_date']
@@ -129,61 +108,28 @@ class Item(models.Model):
 
 class Resource(models.Model):
     number = models.IntegerField(verbose_name=_('number'))
-    sn = models.CharField(max_length=128,
-                          verbose_name=_('sn'))
-    catalog_id = models.CharField(max_length=250,
-                                  blank=True,
-                                  null=True,
-                                  verbose_name=_('catalog id'))
-    national_id = models.CharField(max_length=250,
-                                   verbose_name=_('national id'))
+    sn = models.CharField(max_length=128, verbose_name=_('sn'))
+    catalog_id = models.CharField(max_length=250, blank=True, null=True, verbose_name=_('catalog id'))
+    national_id = models.CharField(max_length=250, verbose_name=_('national id'))
     name = models.CharField(max_length=250, verbose_name=_('resource name'))
-    model = models.CharField(max_length=512,
-                             verbose_name=_('model'))
-    specification = models.CharField(max_length=512,
-                                     verbose_name=_('specification'))
-    price = models.DecimalField(max_digits=100,
-                                decimal_places=2,
-                                verbose_name=_('price'))
-    sn2 = models.CharField(max_length=128,
-                           null=True,
-                           blank=True,
-                           verbose_name=_('sn/2'))
+    model = models.CharField(max_length=512, verbose_name=_('model'))
+    specification = models.CharField(max_length=512, verbose_name=_('specification'))
+    price = models.DecimalField(max_digits=100, decimal_places=2, verbose_name=_('price'))
+    sn2 = models.CharField(max_length=128, null=True, blank=True, verbose_name=_('sn/2'))
     department = models.CharField(max_length=128, verbose_name=_('department'))
-    user = models.CharField(max_length=128,
-                            null=True,
-                            blank=True,
-                            verbose_name=_('user'))
-    keeper = models.CharField(max_length=128,
-                              null=True,
-                              blank=True,
-                              verbose_name=_('keeper'))
-    officer = models.CharField(max_length=128,
-                               null=True,
-                               blank=True,
-                               verbose_name=_('officer in charge'))
-    status = models.CharField(max_length=128,
-                              null=True,
-                              blank=True,
-                              verbose_name=_('status'))
-    location = models.CharField(max_length=256,
-                                null=True,
-                                blank=True,
-                                verbose_name=_('location'))
+    user = models.CharField(max_length=128, null=True, blank=True, verbose_name=_('user'))
+    keeper = models.CharField(max_length=128, null=True, blank=True, verbose_name=_('keeper'))
+    officer = models.CharField(max_length=128, null=True, blank=True, verbose_name=_('officer in charge'))
+    status = models.CharField(max_length=128, null=True, blank=True, verbose_name=_('status'))
+    location = models.CharField(max_length=256, null=True, blank=True, verbose_name=_('location'))
     buy_date = models.DateField(verbose_name=_('buy date'))
-    funding_source = models.CharField(max_length=256,
-                                      verbose_name=_('source of funding'))
-    record_date = models.DateField(null=True,
-                                   blank=True,
-                                   verbose_name=_('record date'))
+    funding_source = models.CharField(max_length=256, verbose_name=_('source of funding'))
+    record_date = models.DateField(null=True, blank=True, verbose_name=_('record date'))
     country = models.CharField(max_length=256, verbose_name=_('country'))
     provider = models.CharField(max_length=256, verbose_name=_('provider'))
     depreciated_year = models.IntegerField(verbose_name=_('depreciated date'))
     used_year = models.IntegerField(verbose_name=_('used year'))
-    depreciated_price = models.DecimalField(max_digits=100,
-                                            decimal_places=2,
-                                            verbose_name=_('depreciated price')
-                                            )
+    depreciated_price = models.DecimalField(max_digits=100, decimal_places=2, verbose_name=_('depreciated price'))
 
     class Meta:
         ordering = ['-record_date']
