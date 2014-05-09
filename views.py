@@ -20,6 +20,7 @@ class ResourceViewSet(viewsets.ReadOnlyModelViewSet):
 class ResourceStatisticView(generics.ListAPIView):
     serializer_class = ResourceStatisticSerializer
     queryset = Resource.objects
+    paginate_by = None
 
     def get_queryset(self):
         qs = self.queryset
@@ -27,3 +28,5 @@ class ResourceStatisticView(generics.ListAPIView):
         qs = qs.extra(select={'year': "strftime('%Y', record_date)"})
         qs = qs.values('year').order_by('year')
         qs = qs.annotate(count=Count('record_date'))
+
+        return qs
