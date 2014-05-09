@@ -51,8 +51,7 @@ class ItemAdmin(admin.ModelAdmin):
                    ]
     inlines = [LogInline]
     exclude = ['last_modify_by']
-    actions = [export_csv_action(extra=['get_recent_logs'],
-                                 exclude=['id']),
+    actions = [export_csv_action(extra=['get_recent_logs'], exclude=['id']),
                clone_action()]
 
     def save_model(self, request, obj, form, change):
@@ -96,7 +95,7 @@ class ItemAdmin(admin.ModelAdmin):
 
 
 class ResourceAdmin(admin.ModelAdmin):
-    search_fields = ['name', 'user', 'sn', 'sn2']
+    search_fields = ['name', 'model', 'specification', 'user', 'sn', 'sn2']
     list_filter = [('record_date', DateRangeFilter),
                    ('buy_date', DateRangeFilter),
                    'catalog_id',
