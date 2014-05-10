@@ -1,6 +1,7 @@
 from django.db.models import Count
 
 from rest_framework import viewsets, generics, filters
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from models import Resource
 from serializers import ResourceStatisticSerializer
@@ -19,11 +20,11 @@ class ResourceViewSet(viewsets.ReadOnlyModelViewSet):
 
 class ResourceStatisticView(generics.ListAPIView):
     serializer_class = ResourceStatisticSerializer
-    queryset = Resource.objects
+    permission_classes = (IsAuthenticatedOrReadOnly,)
     paginate_by = None
 
     def get_queryset(self):
-        qs = self.queryset
+        qs = Resource.objects
         qs = qs.values('record_date')
         qs = qs.extra(select={'year': "strftime('%Y', record_date)"})
         qs = qs.values('year').order_by('year')
