@@ -18,6 +18,8 @@ class ResourceViewSet(viewsets.ReadOnlyModelViewSet):
                      'national_id', 'user', 'sn', 'sn2']
 
 
+
+
 class ResourceStatisticViewSet(ResourceViewSet):
     serializer_class = ResourceStatisticSerializer
     paginate_by = None
@@ -36,11 +38,11 @@ class ResourceStatisticViewSet(ResourceViewSet):
         self.object_list = self.statistic(self.object_list)
         serializer = self.get_serializer(data=self.object_list, many=True)
 
-        columns = set()
-        rows = dict()
         if serializer.is_valid():
-            row = {'year': "", 'count': 0}
-            for d in serializer.data:
+            def reduce_rows(result, d):
+                rows = result["rows"]
+                columns = result["columns"]
+
                 columns.add(d['name'])
                 year = d['year']
                 row = None
@@ -48,7 +50,6 @@ class ResourceStatisticViewSet(ResourceViewSet):
                     row = rows[year]
                 else:
                     row = dict()
-                    row['year'] = year
                     row['count'] = 0
 
                 row[d['name']] = d['count']
@@ -56,6 +57,10 @@ class ResourceStatisticViewSet(ResourceViewSet):
 
                 rows[year] = row
 
-                print(row['count'], d['count'], d['name'], d['year'])
+                return result
 
-        return Response({'columns': columns, 'rows': rows.values()})
+            result = (reduce(reduce_rows,
+                             serializer.data,
+                             {'rows': {}, 'columns': set()}))
+
+        return Response(result)
