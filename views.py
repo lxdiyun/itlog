@@ -27,7 +27,7 @@ class ResourceStatisticViewSet(ResourceViewSet):
     def statistic(self, object_list):
         qs = object_list
         qs = qs.values('record_date', 'name')
-        qs = qs.extra(select={'year': "strftime('%Y', record_date)"})
+        qs = qs.extra(select={'year': "strftime('%%Y', record_date)"})
         qs = qs.values('year', 'name').order_by('year', 'name')
         qs = qs.annotate(count=Count('record_date'))
 
