@@ -1,4 +1,4 @@
-from django.db.models import Count
+from django.db.models import Count, Sum
 
 from rest_framework import viewsets, filters
 from rest_framework.response import Response
@@ -23,10 +23,10 @@ class ResourceStatisticViewSet(ResourceViewSet):
 
     def statistic(self, object_list):
         qs = object_list
-        qs = qs.values('record_date', 'name')
+        qs = qs.values('record_date', 'name', 'price')
         qs = qs.extra(select={'year': "strftime('%%Y', record_date)"})
         qs = qs.values('year', 'name').order_by('year', 'name')
-        qs = qs.annotate(count=Count('record_date'))
+        qs = qs.annotate(count=Count('record_date'), total_price=Sum('price'))
 
         return qs
 
@@ -34,30 +34,26 @@ class ResourceStatisticViewSet(ResourceViewSet):
         self.object_list = self.filter_queryset(self.get_queryset())
         self.object_list = self.statistic(self.object_list)
         serializer = self.get_serializer(data=self.object_list, many=True)
+        result = None
 
         if serializer.is_valid():
             def reduce_rows(result, d):
-                rows = result["rows"]
-                columns = result["columns"]
-
-                columns.add(d['name'])
                 year = d['year']
                 row = None
-                if year in rows:
-                    row = rows[year]
+                if year in result:
+                    row = result[year]
                 else:
-                    row = dict()
-                    row['count'] = 0
+                    row = dict({'total': {'count': 0, 'total_price': 0}})
 
-                row[d['name']] = d['count']
-                row['count'] += d['count']
+                row[d['name']] = {"count": d['count'],
+                                  "total_price": d['total_price']}
+                row['total']['count'] += d['count']
+                row['total']['total_price'] += d['total_price']
 
-                rows[year] = row
+                result[year] = row
 
                 return result
 
-            result = (reduce(reduce_rows,
-                             serializer.data,
-                             {'rows': {}, 'columns': set()}))
+            result = (reduce(reduce_rows, serializer.data, dict()))
 
         return Response(result)
