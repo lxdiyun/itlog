@@ -25,7 +25,7 @@ class ResourceStatisticViewSet(ResourceViewSet):
         qs = object_list
         qs = qs.values('record_date', 'name', 'price')
         qs = qs.extra(select={'year': "strftime('%%Y', record_date)"})
-        qs = qs.values('year', 'name').order_by('year', 'name')
+        qs = qs.values('year', 'name').order_by('name')
         qs = qs.annotate(count=Count('record_date'), total_price=Sum('price'))
 
         return qs
