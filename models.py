@@ -139,6 +139,14 @@ class Resource(models.Model):
     def __unicode__(self):
         return self.name
 
+    def get_recent_logs(self):
+        items = Item.objects.filter(sn=self.sn)
+
+        if items:
+            return items[0].get_recent_logs()
+        else:
+            return None
+
     def get_item(self):
         items = Item.objects.filter(sn=self.sn)
         html = '<a href="%s">%s</a>'
