@@ -2,7 +2,7 @@ from django.conf.urls import patterns, url, include
 
 from rest_framework import routers
 
-from views import ResourceViewSet, ResourceStatisticViewSet, ItemViewSet
+from views import ResourceViewSet, ResourceStatisticViewSet
 
 router = routers.DefaultRouter()
 router.register(r'resource_statistic',
