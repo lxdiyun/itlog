@@ -2,11 +2,13 @@ from django.conf.urls import patterns, url, include
 
 from rest_framework import routers
 
-from views import ResourceViewSet, ResourceStatisticViewSet
+from views import ResourceViewSet, ResourceStatisticViewSet, ItemViewSet
 
 router = routers.DefaultRouter()
-router.register(r'resource', ResourceViewSet)
-router.register(r'resource_statistic', ResourceStatisticViewSet)
+router.register(r'resource_statistic',
+                ResourceStatisticViewSet,
+                base_name='resource_statistic')
+router.register(r'resource', ResourceViewSet, base_name="resource")
 
 urlpatterns = patterns('',
 
