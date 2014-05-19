@@ -4,11 +4,12 @@ from rest_framework import viewsets, filters
 from rest_framework.response import Response
 
 from models import Resource
-from serializers import ResourceStatisticSerializer
+from serializers import ResourceSerializer, ResourceStatisticSerializer
 
 
 class ResourceViewSet(viewsets.ReadOnlyModelViewSet):
     model = Resource
+    serializer_class = ResourceSerializer
     filter_backends = (filters.DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter)
     filter_fields = ['name', 'catalog_id', 'national_id', 'record_date']
     ordering_fields = '__all__'
