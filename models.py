@@ -143,7 +143,7 @@ class Resource(models.Model):
         items = Item.objects.filter(sn=self.sn)
 
         if items:
-            return items[0].get_recent_logs()
+            return items[0].log_set.all()[:5]
         else:
             return None
 
