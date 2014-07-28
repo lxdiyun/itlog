@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-02 13:21+0000\n"
+"POT-Creation-Date: 2014-07-28 09:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -218,7 +218,7 @@ msgstr "资产设备"
 msgid "Resources"
 msgstr "资产设备"
 
-#: models.py:161
+#: models.py:169
 msgid "associated item"
 msgstr "关联日志"
 
