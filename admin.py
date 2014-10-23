@@ -1,8 +1,12 @@
-from models import *
 from django.contrib import admin
 from daterange_filter.filter import DateRangeFilter
 from datetime import datetime
+
+from import_export.admin import ImportExportModelAdmin
 from adli.admin_actions import export_csv_action, clone_action
+
+from models import *
+from .resouces import ResourceResource
 
 
 class ItemTypeAdmin(admin.ModelAdmin):
@@ -94,7 +98,8 @@ class ItemAdmin(admin.ModelAdmin):
             self.model.objects.create(**new_kwargs)
 
 
-class ResourceAdmin(admin.ModelAdmin):
+class ResourceAdmin(ImportExportModelAdmin):
+    resource_class = ResourceResource
     search_fields = ['name', 'model', 'specification', 'user', 'sn', 'sn2']
     list_filter = [('record_date', DateRangeFilter),
                    ('buy_date', DateRangeFilter),

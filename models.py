@@ -107,7 +107,7 @@ class Item(models.Model):
 
 
 class Resource(models.Model):
-    number = models.IntegerField(verbose_name=_('number'))
+    #number = models.IntegerField(verbose_name=_('number'))
     sn = models.CharField(max_length=128, verbose_name=_('sn'))
     catalog_id = models.CharField(max_length=250, blank=True, null=True, verbose_name=_('catalog id'))
     national_id = models.CharField(max_length=250, verbose_name=_('national id'))
