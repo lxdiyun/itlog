@@ -15,7 +15,8 @@ class ResourceViewSet(viewsets.ReadOnlyModelViewSet):
     ordering_fields = '__all__'
     ordering = ['-record_date']
     search_fields = ['name', 'model', 'specification', 'catalog_id',
-                     'national_id', 'user', 'sn', 'sn2', 'record_date']
+                     'national_id', 'user', 'keeper', 'sn', 'sn2',
+                     'record_date']
 
 
 class ResourceStatisticViewSet(ResourceViewSet):
